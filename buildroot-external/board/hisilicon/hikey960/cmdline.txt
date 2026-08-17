@@ -1,1 +1,1 @@
-console=tty0 console=ttyAMA6,115200n8 earlycon=pl011,0xfff32000 cpufreq.default_governor=performance cpuidle.off=1
+console=tty0 console=ttyAMA6,115200n8 earlycon=pl011,0xfff32000 cpufreq.default_governor=ondemand cpuidle.off=1
