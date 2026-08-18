@@ -2,6 +2,10 @@
 # shellcheck disable=SC2155
 
 function haos_pre_image() {
+    # rootfs.erofs has grown past the shared 256M SYSTEM_SIZE default
+    # (hdd-image.sh) — override here rather than editing the shared script.
+    SYSTEM_SIZE=384M
+
     # HiKey 960: copy DTB into EFI boot partition
     mkdir -p "${BINARIES_DIR}/efi-part/EFI/BOOT"
     mkdir -p "${BINARIES_DIR}/efi-part/hisilicon"

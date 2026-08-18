@@ -24,7 +24,7 @@ function create_disk_image() {
     export ota_compatible ota_version
     # variables used in genimage configs
     export BOOTSTATE_SIZE SYSTEM_SIZE KERNEL_SIZE OVERLAY_SIZE
-    RAUC_MANIFEST=$(tempio -template "${BR2_EXTERNAL_HAOS_PATH}/ota/manifest.raucm.gtpl")
+    RAUC_MANIFEST=$(echo '{}' | tempio -template "${BR2_EXTERNAL_HAOS_PATH}/ota/manifest.raucm.gtpl")
     IMAGE_NAME="$(haos_image_basename)"
     BOOT_SPL_TYPE=$(test "$BOOT_SPL" == "true" && echo "spl" || echo "nospl")
     export RAUC_MANIFEST IMAGE_NAME BOOT_SPL_TYPE

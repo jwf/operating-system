@@ -3,8 +3,8 @@ set -e
 
 
 function prepare_rauc_signing() {
-    local key="/build/key.pem"
-    local cert="/build/cert.pem"
+    local key="/home/jordan/haos/key.pem"
+    local cert="/home/jordan/haos/cert.pem"
 
     if [ ! -f "${key}" ]; then
         echo "Generating a self-signed certificate for development"
@@ -23,14 +23,14 @@ function write_rauc_config() {
     export BOOTLOADER PARTITION_TABLE_TYPE BOOT_SPL
 
     (
-        "${HOST_DIR}/bin/tempio" \
+        echo '{}' | "${HOST_DIR}/bin/tempio" \
             -template "${BR2_EXTERNAL_HAOS_PATH}/ota/system.conf.gtpl"
     ) > "${TARGET_DIR}/etc/rauc/system.conf"
 }
 
 
 function install_rauc_certs() {
-    local cert="/build/cert.pem"
+    local cert="/home/jordan/haos/cert.pem"
 
     if [ "${DEPLOYMENT}" == "development" ]; then
         # Contains development and release certificate
